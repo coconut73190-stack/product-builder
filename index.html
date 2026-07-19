@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="이재호 — 디지털 경험을 설계하고 만드는 크리에이티브 디벨로퍼">
+  <title>이재호 — Creative Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #17211a;
+      --paper: #f1efe8;
+      --lime: #c8ff5b;
+      --blue: #314cff;
+      --line: rgba(23,33,26,.18);
+      --muted: #667068;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "DM Sans", "Noto Sans KR", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .noise {
+      position: fixed; inset: 0; pointer-events: none; z-index: 20; opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+    .wrap { width: min(1380px, calc(100% - 64px)); margin: 0 auto; }
+    .nav {
+      height: 90px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--line); position: relative; z-index: 10;
+    }
+    .logo { font-weight: 800; font-size: 20px; letter-spacing: -.06em; }
+    .logo i { display: inline-block; width: 9px; height: 9px; background: var(--blue); border-radius: 50%; margin-left: 5px; }
+    .nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 600; }
+    .nav-links a { position: relative; }
+    .nav-links a:after { content:""; position:absolute; left:0; right:100%; bottom:-5px; height:2px; background:var(--ink); transition:.25s; }
+    .nav-links a:hover:after { right:0; }
+    .status { display:flex; align-items:center; gap:8px; font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+    .status:before { content:""; width:8px; height:8px; border-radius:50%; background:#54d45b; box-shadow:0 0 0 4px rgba(84,212,91,.15); }
+
+    .hero { min-height: calc(100vh - 90px); display: grid; grid-template-rows: 1fr auto; padding: 76px 0 35px; overflow: hidden; }
+    .eyebrow { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 32px; display:flex; gap:14px; align-items:center; }
+    .eyebrow:before { content:""; width:42px; height:1px; background:var(--ink); }
+    h1 { font-size: clamp(64px, 10.4vw, 156px); line-height: .88; letter-spacing: -.075em; margin: 0; font-weight: 700; }
+    .hero-line { display: block; }
+    .hero-line:nth-child(2) { display:flex; align-items:center; gap:2.5vw; color:var(--blue); }
+    .orbit { width: .55em; height: .55em; border: 2px solid currentColor; border-radius:50%; display:inline-block; position:relative; flex:0 0 auto; }
+    .orbit:after { content:""; position:absolute; width:140%; height:40%; left:-20%; top:28%; border:1px solid currentColor; border-radius:50%; transform:rotate(-25deg); }
+    .hero-foot { display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:40px; margin-top:56px; }
+    .intro { max-width:520px; font-size:clamp(16px,1.35vw,20px); line-height:1.7; letter-spacing:-.025em; }
+    .intro strong { font-weight:700; }
+    .scroll { justify-self:end; display:flex; align-items:center; gap:12px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
+    .scroll span { width:48px; height:48px; border:1px solid var(--line); border-radius:50%; display:grid; place-items:center; animation: bob 1.7s ease-in-out infinite; }
+    @keyframes bob { 50% { transform:translateY(7px); } }
+
+    .ticker { background:var(--ink); color:var(--paper); overflow:hidden; padding:19px 0; transform:rotate(-1.2deg) scale(1.02); margin:20px 0 120px; }
+    .ticker-track { display:flex; width:max-content; animation:ticker 20s linear infinite; }
+    .ticker span { font-size:14px; text-transform:uppercase; letter-spacing:.12em; white-space:nowrap; }
+    .ticker b { color:var(--lime); margin:0 28px; }
+    @keyframes ticker { to { transform:translateX(-50%); } }
+
+    .section { padding:120px 0; }
+    .section-head { display:grid; grid-template-columns:1fr 2fr; align-items:start; border-top:1px solid var(--line); padding-top:24px; margin-bottom:72px; }
+    .section-label { font-size:13px; letter-spacing:.1em; text-transform:uppercase; }
+    h2 { margin:0; font-size:clamp(40px,5.3vw,76px); line-height:1.05; letter-spacing:-.06em; max-width:900px; }
+
+    .projects { border-top:1px solid var(--line); }
+    .project { display:grid; grid-template-columns:80px 1.2fr 1fr 54px; gap:30px; align-items:center; min-height:178px; border-bottom:1px solid var(--line); transition:.35s; position:relative; overflow:hidden; }
+    .project:before { content:""; position:absolute; inset:0; background:var(--lime); transform:translateY(101%); transition:.35s cubic-bezier(.2,.8,.2,1); z-index:-1; }
+    .project:hover:before { transform:translateY(0); }
+    .project:hover { padding:0 22px; }
+    .num { font-size:12px; color:var(--muted); }
+    .project h3 { font-size:clamp(28px,3vw,44px); letter-spacing:-.045em; margin:0 0 8px; }
+    .project p { margin:0; color:var(--muted); font-size:14px; }
+    .tags { display:flex; flex-wrap:wrap; gap:7px; }
+    .tags span { padding:8px 13px; border:1px solid var(--line); border-radius:100px; font-size:11px; text-transform:uppercase; letter-spacing:.04em; background:rgba(241,239,232,.35); }
+    .arrow { width:48px; height:48px; border:1px solid var(--line); border-radius:50%; display:grid; place-items:center; font-size:20px; transition:.3s; }
+    .project:hover .arrow { transform:rotate(-45deg); background:var(--ink); color:white; }
+
+    .about { display:grid; grid-template-columns:1fr 1fr; gap:8vw; align-items:start; }
+    .portrait { aspect-ratio:4/5; background:var(--blue); position:relative; overflow:hidden; border-radius:2px; }
+    .portrait .type { position:absolute; color:var(--lime); font-size:clamp(95px,14vw,190px); font-weight:800; letter-spacing:-.1em; left:-.05em; bottom:-.18em; line-height:1; }
+    .portrait .face { position:absolute; width:46%; aspect-ratio:1; border:2px solid var(--lime); border-radius:50%; left:28%; top:21%; }
+    .portrait .face:before, .portrait .face:after { content:""; position:absolute; background:var(--lime); border-radius:50%; width:7%; aspect-ratio:1; top:42%; }
+    .portrait .face:before { left:29%; } .portrait .face:after { right:29%; }
+    .portrait .smile { position:absolute; width:19%; height:10%; border-bottom:2px solid var(--lime); border-radius:50%; left:40.5%; top:51%; }
+    .portrait .caption { position:absolute; right:22px; top:20px; color:white; writing-mode:vertical-rl; font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+    .about-copy h2 { margin-bottom:36px; }
+    .about-copy p { font-size:17px; line-height:1.8; color:#3e4941; letter-spacing:-.02em; }
+    .stats { margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
+    .stat { padding-top:18px; }
+    .stat strong { display:block; font-size:34px; letter-spacing:-.04em; }
+    .stat span { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+
+    .contact { background:var(--blue); color:white; padding:110px 0 32px; margin-top:120px; }
+    .contact .eyebrow:before { background:white; }
+    .contact h2 { max-width:none; font-size:clamp(54px,8.5vw,126px); }
+    .contact-cta { display:inline-flex; align-items:center; gap:18px; margin-top:58px; font-size:18px; border-bottom:1px solid rgba(255,255,255,.5); padding-bottom:10px; }
+    .contact-cta span { width:42px; height:42px; display:grid; place-items:center; background:var(--lime); color:var(--ink); border-radius:50%; transition:.3s; }
+    .contact-cta:hover span { transform:translateX(8px); }
+    footer { margin-top:110px; padding-top:24px; border-top:1px solid rgba(255,255,255,.25); display:flex; justify-content:space-between; font-size:12px; color:rgba(255,255,255,.7); }
+    footer .socials { display:flex; gap:24px; }
+
+    .reveal { opacity:0; transform:translateY(30px); transition:.8s cubic-bezier(.2,.8,.2,1); }
+    .reveal.on { opacity:1; transform:none; }
+    .menu-btn { display:none; border:0; background:none; font-size:24px; }
+
+    @media (max-width: 760px) {
+      .wrap { width:calc(100% - 36px); }
+      .nav { height:72px; }
+      .nav-links, .status { display:none; }
+      .menu-btn { display:block; }
+      .hero { min-height:calc(100svh - 72px); padding-top:48px; }
+      h1 { font-size:17vw; }
+      .hero-line:nth-child(2) { flex-wrap:wrap; gap:4vw; }
+      .hero-foot { grid-template-columns:1fr; margin-top:36px; }
+      .scroll { display:none; }
+      .ticker { margin-bottom:72px; }
+      .section { padding:76px 0; }
+      .section-head { grid-template-columns:1fr; gap:28px; margin-bottom:46px; }
+      .project { grid-template-columns:40px 1fr 42px; gap:12px; min-height:145px; }
+      .project .tags { display:none; }
+      .project:hover { padding:0 8px; }
+      .about { grid-template-columns:1fr; gap:56px; }
+      .about-copy { order:-1; }
+      .stats { margin-top:40px; }
+      .stat strong { font-size:27px; }
+      .contact { margin-top:64px; padding-top:76px; }
+      footer { margin-top:80px; flex-direction:column; gap:18px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior:auto !important; animation:none !important; transition:none !important; } .reveal { opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="wrap nav">
+    <a class="logo" href="#top" aria-label="홈으로">JAEHO<i></i></a>
+    <nav class="nav-links" aria-label="주요 메뉴"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <div class="status">Available for work</div>
+    <button class="menu-btn" aria-label="메뉴 열기">☰</button>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow">Creative developer · Seoul</div>
+        <h1><span class="hero-line">생각을 현실로,</span><span class="hero-line">코드로 <i class="orbit" aria-hidden="true"></i></span><span class="hero-line">경험을 만듭니다.</span></h1>
+      </div>
+      <div class="hero-foot">
+        <p class="intro"><strong>안녕하세요, 이재호입니다.</strong><br>사람의 마음에 오래 남는 디지털 제품과 브랜드 경험을 설계하고 만듭니다.</p>
+        <a class="scroll" href="#work">Selected work <span>↓</span></a>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Design with purpose <b>✦</b> Build with detail <b>✦</b> Create what matters <b>✦</b>&nbsp;</span><span>Design with purpose <b>✦</b> Build with detail <b>✦</b> Create what matters <b>✦</b>&nbsp;</span></div></div>
+
+    <section class="section wrap" id="work">
+      <div class="section-head reveal"><div class="section-label">01 — Selected work</div><h2>아이디어에 형태를,<br>브랜드에 생명력을.</h2></div>
+      <div class="projects reveal">
+        <a class="project" href="#contact"><span class="num">01</span><div><h3>모먼트 아카이브</h3><p>일상의 순간을 기록하는 디지털 플랫폼</p></div><div class="tags"><span>Product</span><span>Web</span><span>2026</span></div><span class="arrow">↗</span></a>
+        <a class="project" href="#contact"><span class="num">02</span><div><h3>플로우 파이낸스</h3><p>복잡한 금융을 단순하고 친근하게</p></div><div class="tags"><span>Branding</span><span>UX/UI</span><span>2025</span></div><span class="arrow">↗</span></a>
+        <a class="project" href="#contact"><span class="num">03</span><div><h3>서울 나이트</h3><p>도시의 밤을 발견하는 문화 큐레이션</p></div><div class="tags"><span>Creative Dev</span><span>Motion</span><span>2025</span></div><span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section wrap" id="about">
+      <div class="about">
+        <div class="portrait reveal" aria-label="이재호를 상징하는 그래픽 초상"><span class="caption">Nice to meet you · Lee Jaeho</span><div class="face"></div><div class="smile"></div><div class="type">JH</div></div>
+        <div class="about-copy reveal">
+          <div class="section-label" style="margin-bottom:40px">02 — About me</div>
+          <h2>좋은 디자인은<br>좋은 질문에서<br>시작됩니다.</h2>
+          <p>디자인과 기술 사이를 자유롭게 오가며 문제의 본질을 찾습니다. 보기 좋은 화면을 넘어, 쓰기 편하고 기억에 남으며 비즈니스에도 실제로 도움이 되는 결과를 지향합니다.</p>
+          <p>새로운 관점, 명확한 커뮤니케이션, 그리고 작은 디테일의 힘을 믿습니다.</p>
+          <div class="stats"><div class="stat"><strong>6+</strong><span>Years experience</span></div><div class="stat"><strong>32</strong><span>Projects shipped</span></div><div class="stat"><strong>9</strong><span>Design awards</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="contact" id="contact"><div class="wrap reveal"><div class="eyebrow">Have a project in mind?</div><h2>멋진 것을 함께<br>만들어 볼까요?</h2><a class="contact-cta" href="mailto:hello@leejaeho.kr">hello@leejaeho.kr <span>→</span></a><footer><span>© 2026 Lee Jaeho. All rights reserved.</span><div class="socials"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">GitHub</a></div><a href="#top">Back to top ↑</a></footer></div></section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('on'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    const menu = document.querySelector('.menu-btn');
+    menu.addEventListener('click', () => {
+      const target = document.querySelector('#work');
+      target.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
