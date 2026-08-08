@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://product-builder-ddr.pages.dev/sitemap.xml
