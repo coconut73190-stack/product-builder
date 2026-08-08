@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://product-builder-ddr.pages.dev/</loc><lastmod>2026-08-08</lastmod><priority>1.0</priority></url>
-  <url><loc>https://product-builder-ddr.pages.dev/guides/personal-vs-team.html</loc><lastmod>2026-08-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://product-builder-ddr.pages.dev/guides/ai-subscription-budget.html</loc><lastmod>2026-08-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://product-builder-ddr.pages.dev/guides/team-invite-safety.html</loc><lastmod>2026-08-08</lastmod><priority>0.9</priority></url>
-  <url><loc>https://product-builder-ddr.pages.dev/about.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://product-builder-ddr.pages.dev/contact.html</loc><lastmod>2026-08-08</lastmod><priority>0.5</priority></url>
-  <url><loc>https://product-builder-ddr.pages.dev/privacy.html</loc><lastmod>2026-08-08</lastmod><priority>0.4</priority></url>
-  <url><loc>https://product-builder-ddr.pages.dev/terms.html</loc><lastmod>2026-08-08</lastmod><priority>0.4</priority></url>
+  <url><loc>https://product-builder-ddr.pages.dev/guides/personal-vs-team</loc><lastmod>2026-08-08</lastmod><priority>0.9</priority></url>
+  <url><loc>https://product-builder-ddr.pages.dev/guides/ai-subscription-budget</loc><lastmod>2026-08-08</lastmod><priority>0.9</priority></url>
+  <url><loc>https://product-builder-ddr.pages.dev/guides/team-invite-safety</loc><lastmod>2026-08-08</lastmod><priority>0.9</priority></url>
+  <url><loc>https://product-builder-ddr.pages.dev/about</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://product-builder-ddr.pages.dev/contact</loc><lastmod>2026-08-08</lastmod><priority>0.5</priority></url>
+  <url><loc>https://product-builder-ddr.pages.dev/privacy</loc><lastmod>2026-08-08</lastmod><priority>0.4</priority></url>
+  <url><loc>https://product-builder-ddr.pages.dev/terms</loc><lastmod>2026-08-08</lastmod><priority>0.4</priority></url>
 </urlset>
