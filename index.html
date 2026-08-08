@@ -126,6 +126,27 @@
     .feature p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 14px; }
     .feature:nth-child(2) p { color: #aeb9b1; }
 
+    .partner-wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: start; }
+    .partner-copy h2 { margin: 12px 0 18px; font-size: clamp(34px, 4vw, 50px); line-height: 1.2; letter-spacing: -.05em; }
+    .partner-copy p { color: var(--muted); line-height: 1.75; }
+    .partner-points { display: grid; gap: 12px; margin-top: 28px; }
+    .partner-points span { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; }
+    .partner-points i { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; background: #e4eddb; color: var(--green); font-style: normal; }
+    .partner-form { padding: 30px; border-radius: 26px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(29,55,39,.07); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: grid; gap: 8px; }
+    .field-full { grid-column: 1 / -1; }
+    .field label { font-size: 13px; font-weight: 700; }
+    .field input, .field textarea {
+      width: 100%; border: 1px solid var(--line); border-radius: 13px; padding: 14px 15px;
+      color: var(--ink); background: white; outline: none; resize: vertical;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(39,103,73,.09); }
+    .field textarea { min-height: 135px; }
+    .form-foot { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 18px; }
+    .form-foot small { color: var(--muted); line-height: 1.5; }
+    .form-foot .btn { flex: none; padding: 15px 24px; }
+
     .cta {
       margin-bottom: 38px; padding: 70px 7%; border-radius: 30px; text-align: center; color: white;
       background: var(--green); position: relative; overflow: hidden;
@@ -152,6 +173,7 @@
       .hero-grid { grid-template-columns: 1fr; gap: 50px; }
       .market-card { margin: 0 auto; transform: none; }
       .stats, .cards { grid-template-columns: 1fr; }
+      .partner-wrap { grid-template-columns: 1fr; gap: 38px; }
       .section-top { align-items: flex-start; flex-direction: column; }
       .stat { padding: 22px; }
       section { padding: 78px 0; }
@@ -166,6 +188,9 @@
       .plan { grid-template-columns: 44px 1fr; }
       .price { grid-column: 2; text-align: left; }
       .trust { align-items: flex-start; flex-direction: column; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field-full { grid-column: auto; }
+      .form-foot { align-items: stretch; flex-direction: column; }
     }
   </style>
 </head>
@@ -209,10 +234,31 @@
       </div>
     </section>
 
+    <section class="shell" id="partner">
+      <div class="partner-wrap">
+        <div class="partner-copy">
+          <span class="label">Partnership</span>
+          <h2>함께 더 좋은<br>구독 경험을 만들어요.</h2>
+          <p>브랜드 제휴, 공동 프로모션, 기업용 좌석 공급 등 SplitAI와 함께할 아이디어가 있다면 편하게 알려주세요.</p>
+          <div class="partner-points"><span><i>✓</i> 영업일 기준 1~2일 내 답변</span><span><i>✓</i> 제안 내용은 안전하게 전달</span></div>
+        </div>
+        <form class="partner-form" action="https://formspree.io/f/mqpzebkl" method="POST">
+          <input type="hidden" name="_subject" value="[SplitAI] 새로운 제휴 문의" />
+          <div class="form-grid">
+            <div class="field"><label for="partner-name">이름</label><input id="partner-name" name="name" type="text" placeholder="홍길동" required /></div>
+            <div class="field"><label for="partner-email">이메일</label><input id="partner-email" name="email" type="email" placeholder="hello@company.com" required /></div>
+            <div class="field field-full"><label for="partner-company">회사 또는 채널명</label><input id="partner-company" name="company" type="text" placeholder="회사명, 서비스명 또는 운영 채널" /></div>
+            <div class="field field-full"><label for="partner-message">제휴 내용</label><textarea id="partner-message" name="message" placeholder="제휴 아이디어와 원하는 협업 방식을 간단히 적어주세요." required></textarea></div>
+          </div>
+          <div class="form-foot"><small>제출하면 문의 답변을 위한 개인정보 수집에 동의한 것으로 간주됩니다.</small><button class="btn btn-dark" type="submit">문의 보내기 →</button></div>
+        </form>
+      </div>
+    </section>
+
     <div class="cta shell"><h2>똑똑한 구독 생활,<br>오늘부터 시작해요.</h2><p>가입은 무료예요. 필요한 AI 좌석이 있는지 먼저 확인해보세요.</p><button class="btn btn-lime js-modal">무료로 시작하기 →</button></div>
   </main>
 
-  <footer class="shell"><a class="brand" href="#"><span class="brand-mark">S</span> SplitAI</a><span>© 2026 SplitAI. 팀 플랜 약관을 준수하는 좌석 연결 플랫폼.</span><span>이용약관 · 개인정보처리방침 · 고객센터</span></footer>
+  <footer class="shell"><a class="brand" href="#"><span class="brand-mark">S</span> SplitAI</a><span>© 2026 SplitAI. 팀 플랜 약관을 준수하는 좌석 연결 플랫폼.</span><span>이용약관 · 개인정보처리방침 · <a href="#partner">제휴 문의</a></span></footer>
 
   <div class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal"><h3 id="modal-title">SplitAI 사전 등록</h3><p>이메일을 남기면 서비스 오픈 소식과 검증된 좌석 정보를 보내드릴게요.</p><input type="email" placeholder="name@example.com" aria-label="이메일" /><div class="modal-actions"><button class="btn btn-ghost js-close">닫기</button><button class="btn btn-dark js-submit">등록하기</button></div></div>
